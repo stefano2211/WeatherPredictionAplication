@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="" method="post" style="margin: 80px;">
+  {% csrf_token %}
+    <div class="row">
+        <div class="col">
+          <p>Maximum Temperature</p>
+          {{ form.temp_max }}
+        </div>
+        <div class="col">
+          <p>Minimum Temperature</p>
+          {{ form.temp_min }}
+        </div>
+        <div class="col">
+          <p>Wind</p>
+          {{ form.wind }}
+          </div>
+      </div>
+    <div class="submit" style="margin-top: 40px; text-align: center;">
+        <input type="submit" value="Prediction" style="width: 160px; height: 60px;" class="btn btn-primary">
+    </div>
+</form>
+{% if form.is_valid %}
+  {% if prediction_name == 1 %}
+    <h2 style="text-align: center;">Rain</h2>
+  {% endif %}
+  {% if prediction_name == 2 %}
+    <h2 style="text-align: center;">Sun</h2>
+  {% endif %}
+  {% if prediction_name == 3 %}
+    <h2 style="text-align: center;">Fog</h2>
+  {% endif %}
+  {% if prediction_name == 4 %}
+    <h2 style="text-align: center;">Drizzle</h2>
+  {% endif %}
+  {% if prediction_name == 5 %}
+    <h2 style="text-align: center;">Snow</h2>
+  {% endif %}
+{% endif %}
+{% endblock %}
